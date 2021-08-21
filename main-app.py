@@ -28,9 +28,10 @@ if __name__ == '__main__':
                 opacity=0.8,
                 stroked=True,
                 filled=True,
-                radius_scale=60,
-                radius_min_pixels=1,
-                radius_max_pixels=10,
+                radius_scale=500,
+                # radius_scale=60,
+                radius_min_pixels=2,
+                radius_max_pixels=60,
                 line_width_min_pixels=1,
                 get_position=['Longitude', 'Latitude'],
                 get_radius=selected_month,
@@ -47,6 +48,7 @@ if __name__ == '__main__':
                 initial_view_state={"latitude": 0,
                                     "longitude": -122.4, "zoom": 0, "pitch": 0},
                 layers=selected_layers,
+                tooltip={"text": "{City}, {Country}\n" + selected_month + ': {' + selected_month + '}'}
             ))
         else:
             st.error("Please choose at least one layer above.")
