@@ -36,8 +36,8 @@ if __name__ == '__main__':
         
         st.sidebar.markdown('### Colours')
 
-        selected_min_colour = st.sidebar.color_picker('Min Colour')
-        selected_max_colour = st.sidebar.color_picker('Max Colour')
+        selected_min_colour = st.sidebar.color_picker('Min Colour', '#FFFFCA')
+        selected_max_colour = st.sidebar.color_picker('Max Colour', '#EF9200')
 
         lci = LinearColourInterpolator(hex_to_rgb(selected_min_colour), hex_to_rgb(selected_max_colour), n_min, n_max)
         df_melt['Colour'] = [lci.interpolate(v) for v in df_melt['Sunshine'].values]
@@ -66,9 +66,11 @@ if __name__ == '__main__':
             st.pydeck_chart(pdk.Deck(
                 map_style="mapbox://styles/mapbox/light-v9",
                 initial_view_state={"latitude": 0,
-                                    "longitude": -122.4, "zoom": 0.1, "pitch": 10},
+                                    "longitude": 12, "zoom": 0.35, "pitch": 10},
                 layers=selected_layers,
-                tooltip={"text": "{City}, {Country}\n" + selected_month + ': {' + selected_month + '}'}
+                tooltip={
+                    'html': '<b>{City}, {Country}</b><br/>Sunshine Hours<br/>' + f'{selected_month}: ' + '{Sunshine}'
+                }
             ))
         else:
             st.error("Please choose at least one layer above.")

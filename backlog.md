@@ -1,6 +1,9 @@
 # Current tasks
 
-- Figure out what chart type to use. Scatter is a bit basic. See [pydeck Layers](https://deckgl.readthedocs.io/en/latest/index.html).
+- **Add a colour scale which utilises the CIELAB scale?** Particularly as the task mentions the choice of colour specifically. Explanation of CIELAB [here](https://www.vis4.net/blog/2011/12/avoid-equidistant-hsv-colors/), google for more. [``python-colormath``](https://python-colormath.readthedocs.io/en/latest/) is a possible library to use for this.
+- Add more charts/layers to the app
+- Incorporate daylight hours somehow? The calculation is in ``solar_elevation`` in ``sunshine-notebook.ipynb``
+- Find more data to add to the dataset
 
 # Reminders
 ## Initial setup
